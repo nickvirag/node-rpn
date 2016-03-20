@@ -14,7 +14,7 @@ Example:
 ```
 var rpn = require('./rpn.js');
 
-rpn.evaluate('6 7 +', function(response, err) {
+rpn.evaluate('6 7 + 2 -', function(response, err) {
   if (err.length == 0) { // err is an array, not a string
     res.end(response);
   } else {
@@ -24,11 +24,18 @@ rpn.evaluate('6 7 +', function(response, err) {
 ```
 
 ### Demo
-Run the demo with
+Run the demo
 ```
 node demo
 ```
-Access via `localhost:3000` in your browser.
+Open the demo URL (Linux and OS X)
+```
+open http://localhost:3000
+```
+Windows
+```
+start http://localhost:3000
+```
 
 ### License
-Released under the MIT license. See file LICENSE.txt
+Released under the MIT license. See `LICENSE.txt`

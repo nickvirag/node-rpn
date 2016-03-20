@@ -3,9 +3,9 @@ var rpn = require('./rpn');
 
 var server = http.createServer(function(req, res) {
   res.writeHead(200);
-  rpn.evaluate('6 71 +', function(response, err) {
+  rpn.evaluate('6 7 + 2 -', function(response, err) {
     if (err.length == 0) {
-      res.end(response);
+      res.end(response.toString());
     } else {
       res.end('Errors: ' + err.toString());
     }

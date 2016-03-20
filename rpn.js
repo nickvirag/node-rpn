@@ -1,4 +1,4 @@
-var operators = ['+', '-', '*', '/', '^', '\'', '%'];
+var operators = ['+', '-', '*', '/', '^', 'root', '%'];
 
 var calculate = function(firstTerm, secondTerm, operator) {
   var response = 0;
@@ -30,19 +30,22 @@ var calculate = function(firstTerm, secondTerm, operator) {
 };
 
 exports.evaluate = function(expression, callback) {
+
   var expression = expression.split(' ');
-  var res = '';
-  var err = [];
-  var stack = [];
+  var stack = [], err = [];
+
   expression.forEach(function(object) {
     if (operators.indexOf(object) != -1) {
-      stack.push(calculate(stack.pop(), stack.pop(), object));
+      var secondTerm = stack.pop();
+      var firstTerm = stack.pop();
+      stack.push(calculate(firstTerm, secondTerm, object));
     } else if (/\d/.test(object)) {
       stack.push(parseInt(object));
     } else {
       err.push('Invalid character: ' + object);
     }
   });
+
   if (stack.length == 1) {
     callback(stack[0], err);
   } else {
