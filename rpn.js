@@ -39,8 +39,8 @@ exports.evaluate = function(expression, callback) {
       var secondTerm = stack.pop();
       var firstTerm = stack.pop();
       stack.push(calculate(firstTerm, secondTerm, object));
-    } else if (/\d/.test(object)) {
-      stack.push(parseInt(object));
+    } else if (!isNaN(object)) {
+      stack.push(Number(object));
     } else {
       err.push('Invalid character: ' + object);
     }

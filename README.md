@@ -1,24 +1,24 @@
 # node-rpn
 
-node-rpn is a simple Javascript RPN calculator with a node module wrapper.
+node-rpn is a simple Javascript reverse polish calculator with a node module wrapper.
 
 ### Installation
 
 1. Add `rpn.js` to your project's modules directory
-2. Include to files with `require('path/to/modules/rpn.js')`
+2. Include via `var rpn = require('path/to/modules/rpn.js')`
 
 ### Usage
 
 `evaluate(expression, callback)`: Evaluate a string
-Example:
+
+Example
 ```
 var rpn = require('./rpn.js');
 
-rpn.evaluate('6 7 + 2 -', function(response, err) {
-  if (err.length == 0) { // err is an array, not a string
-    res.end(response);
-  } else {
-    res.end('Errors: ' + err.toString());
+rpn.evaluate('6 7.5 + 2 - -3 +', function(res, err) {
+  console.log('Response: ' + res);
+  if (err.length != 0) { // err is an array
+    console.log('Errors: ' + err);
   }
 });
 ```
@@ -28,12 +28,12 @@ Run the demo
 ```
 node demo
 ```
-Open the demo URL (Linux and OS X)
+Open the demo URL
 ```
+# Linux and OS X
 open http://localhost:3000
-```
-Windows
-```
+
+# Windows
 start http://localhost:3000
 ```
 
