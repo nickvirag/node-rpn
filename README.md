@@ -24,9 +24,17 @@ rpn.evaluate('6 7.5 + 2 - -3 +', function(res, err) {
 ```
 
 ### Demo
-Run the demo
+Open demo directory
 ```
-node demo
+cd demo
+```
+Install dependencies
+```
+npm install
+```
+Start server
+```
+npm start
 ```
 Open the demo URL
 ```

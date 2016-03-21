@@ -1,0 +1,31 @@
+<% layout('layout') -%>
+
+<script>
+  $(function() {
+    $('#rpnForm').submit(function(event) {
+
+      var self = $(this);
+      var url = self.attr('action');
+      var query = {
+        expression: self.find('input[name=expression]').val()
+      };
+
+      $.get(url, query).done(function(data) {
+        $('#rpnResult').text(data.result);
+        $('#rpnErrors').text(data.status == 'ERROR' ? data.error : 'None');
+      });
+
+      event.preventDefault();
+    });
+  });
+</script>
+
+<p>
+  <form action="/api/evaluate" id="rpnForm" method="GET">
+    <input type="text" name="expression" placeholder="RPN Expression">
+    <input type="submit" value="Evaluate">
+  </form>
+  
+  Result: <span id="rpnResult"></span><br>
+  Errors: <span id="rpnErrors"></span><br>
+</p>

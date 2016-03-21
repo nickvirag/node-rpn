@@ -1,29 +1,23 @@
-var operators = ['+', '-', '*', '/', '^', 'root', '%'];
+var operators = ['+', '-', '*', '/', '%', '^', 'root'];
 
 var calculate = function(firstTerm, secondTerm, operator) {
   var response = 0;
   switch(operator) {
     case operators[0]: // add
-      response = firstTerm + secondTerm;
-      break;
     case operators[1]: // subtract
-      response = firstTerm - secondTerm;
-      break;
     case operators[2]: // multiply
-      response = firstTerm * secondTerm;
-      break;
     case operators[3]: // divide
-      response = firstTerm / secondTerm;
+    case operators[4]: // modulo
+      response = eval(firstTerm + operator + secondTerm);
       break;
-    case operators[4]: // exponent
+    case operators[5]: // exponent
       response = Math.pow(firstTerm, secondTerm);
       break;
-    case operators[5]: // root
-      response = Math.pow(firstTerm, 1 / secondTerm);
+    case operators[6]: // root
+      response = Math.pow(firstTerm, 1.0 / secondTerm);
       break;
-    case operators[6]: // modulo
-      response = firstTerm % secondTerm;
-    default:
+    default: // unsupported operation
+      console.log('Unsupported operation ' + operator);
       break;
   }
   return response;
@@ -46,10 +40,9 @@ exports.evaluate = function(expression, callback) {
     }
   });
 
-  if (stack.length == 1) {
-    callback(stack[0], err);
-  } else {
+  if (stack.length != 1) {
     err.push('Invalid number of objects');
-    callback(null, err);
   }
+
+  callback(stack[0] || 0.0, err);
 };
