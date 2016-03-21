@@ -71,7 +71,7 @@ rpn.evaluateReturnJson('6 7.5 + 2 - -3 +', function(err, json) {
 ## <a name="supported_syntax"></a> Supported Syntax
 This node module supports negatives and decimals. The following are all valid expressions:
 | Expression | Evaluation |
-|---|---|
+|------------|------------|
 | `100 2 *` | `200` |
 | `-15 5 / 2.1 -` | `-5.1` |
 | `6 7.5 + 2 - -3 +` | `8.5` |
@@ -81,7 +81,7 @@ This node module supports negatives and decimals. The following are all valid ex
 
 Here is a complete list of all supported operators:
 | Operator | Function |
-|---|---|
+|----------|----------|
 | `+` | add |
 | `-` | subtract |
 | `|` | multiply |
