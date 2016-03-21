@@ -33,6 +33,8 @@ This is the breakdown:
 5
 ```
 
+Go to [Syntax](#syntax) for more examples.
+
 ## <a name="installation"></a> Installation
 
 1. Add `rpn.js` to your project's modules directory
