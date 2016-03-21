@@ -49,7 +49,7 @@ exports.evaluate = function(expression, callback) {
   callback(err, stack[0] || 0.0);
 };
 
-// Assemble response into web safe JSON object
+// Evaluation that returns a JSON object
 
 exports.evaluateReturnJson = function(expression, callback) {
   exports.evaluate(expression, function(err, response) {

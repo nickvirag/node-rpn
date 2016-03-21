@@ -1,6 +1,6 @@
 # node-rpn
 
-node-rpn is a simple Javascript reverse polish calculator with a node module wrapper.
+node-rpn is a simple Javascript reverse polish calculator with a node module wrapper. The purpose of this project is to demonstrate creating a custom node module, using basic Express routing, and providing both validation and fallback for HTML forms.
 
 ### Installation
 
@@ -9,7 +9,7 @@ node-rpn is a simple Javascript reverse polish calculator with a node module wra
 
 ### Usage
 
-`evaluate(expression, callback)`: Evaluate a string
+`rpn.evaluate(expression, callback)`: Evaluate a string and return a number
 
 Example
 ```
@@ -23,15 +23,15 @@ rpn.evaluate('6 7.5 + 2 - -3 +', function(err, result) {
 });
 ```
 
-`evaluateReturnJson(expression, callback)`: Evaluate a string with web safe JSON response
+`rpn.evaluateReturnJson(expression, callback)`: Evaluate a string and return a JSON formatted response
 
 Format
 ```
 {
-  status: string,
+  status: string, // 'OK' or 'ERROR'
   expression: string,
   result: number,
-  error: [string]
+  error: [string] // [] if no errors
 }
 ```
 
@@ -79,6 +79,24 @@ open http://localhost:3000
 # Windows
 start http://localhost:3000
 ```
+
+### Code Concepts
+* HTML
+  * Support systems with Javascript disabled
+* Vanilla Javascript
+  * Stack data structure
+  * JSON object manipulation
+* jQuery
+  * Asynchronous form submission
+  * Client-side form field validation
+  * DOM Manipulation
+* Node.js server with Express.js
+  * GETable and POSTable routes
+  * Server-side form field validation
+  * Custom node module
+  * Graceful error handling
+
+
 
 ### License
 Released under the MIT license. See `LICENSE.txt`
