@@ -5,6 +5,7 @@ node-rpn is a simple Javascript reverse polish calculator with a node module wra
 ## Sections
 * [Installation](#installation)
 * [Usage](#usage)
+* [Supported Syntax](#supported_syntax)
 * [Demo Features](#demo_features)
 * [Demo Installation](#demo_installation)
 * [License](#license)
@@ -66,6 +67,30 @@ rpn.evaluateReturnJson('6 7.5 + 2 - -3 +', function(err, json) {
   }
 });
 ```
+
+## <a name="supported_syntax"></a> Supported Syntax
+This node module supports negatives and decimals. The following are all valid expressions:
+
+`100 2 *` evaluates to `200`
+
+`-15 5 / 2.1 -` evaluates to `-5.1`
+
+`6 7.5 + 2 - -3 +` evaluates to `8.5`
+
+`5 2 ^` evaluates to `25`
+
+`25 2 root` evaluates to `5`
+
+`14 5 %` evaluates to `4`
+
+Here is a complete list of all supported operators:
+* `+`: add
+* `-`: subtract
+* `*`: multiply
+* `/`: divide
+* `^`: power
+* `root`: root
+* `%`: modulo
 
 ## <a name="demo_features"></a> Demo Features
 The demo showcases the following features in addition to the rpn module:
