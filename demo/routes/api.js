@@ -3,29 +3,18 @@ var rpn = require('../../rpn.js');
 var router = express.Router();
 
 router.get('/evaluate', function(req, res, next) {
-
-  var json = {
-    status: 'OK',
-    result: 0.0,
-    error: []
-  };
-
   var data = req.query;
 
   if (data.expression) {
-    rpn.evaluate(data.expression, function(response, err) {
-      if (err.length != 0) {
-        json.status = 'ERROR';
-        json.error = err;
-      }
-      json.result = response;
-
+    rpn.evaluateReturnJson(data.expression, function(err, json) {
       res.send(json);
     });
   } else {
-    json.status = 'ERROR';
-    json.error.push('Missing arguments');
-
+    var json = {
+      status: 'ERROR',
+      result: 0.0,
+      error: ['Missing arguments']
+    };
     res.send(json);
   }
 });

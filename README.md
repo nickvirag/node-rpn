@@ -13,12 +13,45 @@ node-rpn is a simple Javascript reverse polish calculator with a node module wra
 
 Example
 ```
-var rpn = require('./rpn.js');
+var rpn = require('./rpn');
 
-rpn.evaluate('6 7.5 + 2 - -3 +', function(res, err) {
-  console.log('Response: ' + res);
+rpn.evaluate('6 7.5 + 2 - -3 +', function(err, result) {
+  console.log('Result: ' + result);
   if (err.length != 0) { // err is an array
     console.log('Errors: ' + err);
+  }
+});
+```
+
+`evaluateReturnJson(expression, callback)`: Evaluate a string with web safe JSON response
+
+Format
+```
+{
+  result: number,
+  status: string,
+  error: [string]
+}
+```
+
+Example
+```
+var rpn = require('./rpn');
+
+rpn.evaluateReturnJson('6 7.5 + 2 - -3 +', function(err, json) {
+
+  /*
+    '6 7.5 + 2 - -3 +' responds with {
+      result: 8.5,
+      status: 'OK',
+      error: []
+    }
+  */
+
+  console.log('Result: ' + json.result);
+  console.log('Status: ' + json.status);
+  if (status == 'ERROR') {
+    console.log('Error: ' + json.error);
   }
 });
 ```

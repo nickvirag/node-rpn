@@ -4,10 +4,10 @@
   $(function() {
     $('#rpnForm').submit(function(event) {
 
-      var self = $(this);
-      var url = self.attr('action');
+      var form = $(this);
+      var url = form.attr('action');
       var query = {
-        expression: self.find('input[name=expression]').val()
+        expression: form.find('input[name=expression]').val()
       };
 
       $.get(url, query).done(function(data) {
@@ -17,6 +17,21 @@
 
       event.preventDefault();
     });
+
+    var rpnFormValidation = function() {
+      var form = $('#rpnForm');
+      var expression = form.find('input[name=expression]');
+      var submit = form.find('input[type=submit]');
+      if (expression.val()) {
+        submit.prop('disabled', false);
+      } else {
+        submit.prop('disabled', true);
+      }
+    };
+
+    $('#rpnForm input[name=expression]').on('keyup', rpnFormValidation);
+
+    rpnFormValidation();
   });
 </script>
 
@@ -25,7 +40,7 @@
     <input type="text" name="expression" placeholder="RPN Expression">
     <input type="submit" value="Evaluate">
   </form>
-  
+
   Result: <span id="rpnResult"></span><br>
   Errors: <span id="rpnErrors"></span><br>
 </p>

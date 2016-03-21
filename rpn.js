@@ -23,6 +23,8 @@ var calculate = function(firstTerm, secondTerm, operator) {
   return response;
 };
 
+// Standard evaluation
+
 exports.evaluate = function(expression, callback) {
 
   var expression = expression.split(' ');
@@ -44,5 +46,18 @@ exports.evaluate = function(expression, callback) {
     err.push('Invalid number of objects');
   }
 
-  callback(stack[0] || 0.0, err);
+  callback(err, stack[0] || 0.0);
+};
+
+// Assemble response into web safe JSON object
+
+exports.evaluateReturnJson = function(expression, callback) {
+  exports.evaluate(expression, function(err, response) {
+    var json = {
+      status: err.length == 0 ? 'OK' : 'ERROR',
+      result: response,
+      error: err
+    };
+    callback(err, json);
+  });
 };
