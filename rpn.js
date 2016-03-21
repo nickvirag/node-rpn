@@ -56,6 +56,7 @@ exports.evaluateReturnJson = function(expression, callback) {
     var json = {
       status: err.length == 0 ? 'OK' : 'ERROR',
       result: response,
+      expression: expression,
       error: err
     };
     callback(err, json);

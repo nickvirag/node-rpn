@@ -12,6 +12,7 @@ router.get('/evaluate', function(req, res, next) {
   } else {
     var json = {
       status: 'ERROR',
+      expression: '',
       result: 0.0,
       error: ['Missing arguments']
     };

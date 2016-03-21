@@ -28,8 +28,9 @@ rpn.evaluate('6 7.5 + 2 - -3 +', function(err, result) {
 Format
 ```
 {
-  result: number,
   status: string,
+  expression: string,
+  result: number,
   error: [string]
 }
 ```
@@ -41,9 +42,10 @@ var rpn = require('./rpn');
 rpn.evaluateReturnJson('6 7.5 + 2 - -3 +', function(err, json) {
 
   /*
-    '6 7.5 + 2 - -3 +' responds with {
-      result: 8.5,
+    '6 7.5 + 2 - -3 +' evaluates to {
       status: 'OK',
+      expression: '6 7.5 + 2 - -3 +',
+      result: 8.5,
       error: []
     }
   */

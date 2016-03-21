@@ -4,13 +4,15 @@ var rpn = require('../../rpn.js');
 
 router.post('/', function(req, res, next) {
   var data = req.body;
-  if (req.body) {
+  if (data.expression) {
     rpn.evaluate(data.expression, function(err, response) {
-      res.render('result', {
-        title: response.result,
+      var pageData = {
         status: err.length == 0 ? 'OK' : 'ERROR',
+        expression: data.expression,
+        result: response,
         error: err
-      });
+      };
+      res.render('result', pageData);
     });
   } else {
     res.render('error', {

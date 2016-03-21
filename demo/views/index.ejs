@@ -1,16 +1,17 @@
 <% layout('layout') -%>
 
-<script>
+<script type="text/javascript">
   $(function() {
     $('#rpnForm').submit(function(event) {
 
       var form = $(this);
-      var url = form.attr('action');
+      var url = '/api/evaluate';
       var query = {
         expression: form.find('input[name=expression]').val()
       };
 
       $.get(url, query).done(function(data) {
+        $('#rpnExpression').text(data.expression);
         $('#rpnResult').text(data.result);
         $('#rpnErrors').text(data.status == 'ERROR' ? data.error : 'None');
       });
@@ -22,6 +23,7 @@
       var form = $('#rpnForm');
       var expression = form.find('input[name=expression]');
       var submit = form.find('input[type=submit]');
+
       if (expression.val()) {
         submit.prop('disabled', false);
       } else {
@@ -32,15 +34,24 @@
     $('#rpnForm input[name=expression]').on('keyup', rpnFormValidation);
 
     rpnFormValidation();
+
+    $('.javascriptEnabledOnly').css('visibility', 'visible');
   });
 </script>
 
 <p>
-  <form action="/api/evaluate" id="rpnForm" method="GET">
+  <noscript>
+    Enable Javascript in your browser for asynchronous functionality and client-side validation!<br>
+  </noscript>
+
+  <form action="/result" id="rpnForm" method="POST">
     <input type="text" name="expression" placeholder="RPN Expression">
     <input type="submit" value="Evaluate">
   </form>
 
-  Result: <span id="rpnResult"></span><br>
-  Errors: <span id="rpnErrors"></span><br>
+  <div class="javascriptEnabledOnly">
+    Expression: <span id="rpnExpression">-</span><br>
+    Result: <span id="rpnResult">-</span><br>
+    Errors: <span id="rpnErrors">-</span><br>
+  </div>
 </p>
