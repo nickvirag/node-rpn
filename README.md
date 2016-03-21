@@ -1,39 +1,37 @@
 # node-rpn
 
-node-rpn is a simple Javascript reverse polish calculator wrapped in a node module.
+node-rpn is a simple Javascript Reverse Polish Notation calculator wrapped in a node module.
 
 ## Sections
-* [Supported Syntax](#supported_syntax)
+* [About RPN](#about_rpn)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Syntax](#syntax)
 * [Demo Features](#demo_features)
 * [Demo Installation](#demo_installation)
 * [Known Issues](#known_issues)
 * [License](#license)
 
-## <a name="supported_syntax"></a> Supported Syntax
-This node module supports negatives and decimals. The following are all valid expressions:
+## <a name="about_rpn"></a> About RPN
 
-Expression | Evaluation
---- | ---
-`100 2 *`  | `200`
-`-15 5 / 2.1 -` | `-5.1`
-`6 7.5 + 2 - -3 +` | `8.5`
-`5 2 ^` | `25`
-`25 2 root` | `5`
-`14 5 %` | `4`
+Reverse Polish Notation (RPN) is a stack-based mathematical notation where operators follow the operands.
 
-Here is a complete list of all supported operators:
+Here is `3 + 4` in RPN:
 
-Operator | Function
---- | ---
-`+` | add
-`-` | subtract
-`|` | multiply
-`/` | divide
-`^` | power
-`root` | root
-`%` | modulo
+`3 4 +` => `7`
+
+Here is a more complicated equation in RPN:
+
+`3 4 + 2 -` => `5`
+
+This is the breakdown:
+
+```
+3 4 + 2 -
+(3 4 +) 2 -
+7 2 -
+5
+```
 
 ## <a name="installation"></a> Installation
 
@@ -92,6 +90,30 @@ rpn.evaluateReturnJson('6 7.5 + 2 - -3 +', function(err, json) {
   }
 });
 ```
+
+## <a name="syntax"></a> Syntax
+This node module supports negatives and decimals. The following are all valid expressions:
+
+Expression | Evaluation
+--- | ---
+`100 2 *`  | `200`
+`-15 5 / 2.1 -` | `-5.1`
+`6 7.5 + 2 - -3 +` | `8.5`
+`5 2 ^` | `25`
+`25 2 root` | `5`
+`14 5 %` | `4`
+
+Here is a complete list of all supported operators:
+
+Operator | Function
+--- | ---
+`+` | add
+`-` | subtract
+`|` | multiply
+`/` | divide
+`^` | power
+`root` | root
+`%` | modulo
 
 ## <a name="demo_features"></a> Demo Features
 The demo showcases the following features in addition to the rpn module:
