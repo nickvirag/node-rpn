@@ -1,13 +1,20 @@
 # node-rpn
 
-node-rpn is a simple Javascript reverse polish calculator with a node module wrapper. The purpose of this project is to demonstrate creating a custom node module, using basic Express routing, and providing both validation and fallback for HTML forms.
+node-rpn is a simple Javascript reverse polish calculator with a node module wrapper.
 
-### Installation
+## Sections
+* [Installation](#installation)
+* [Usage](#usage)
+* [Demo Features](#demo_features)
+* [Demo Installation](#demo_installation)
+* [License](#license)
+
+## <a name="installation"></a> Installation
 
 1. Add `rpn.js` to your project's modules directory
 2. Include via `var rpn = require('path/to/modules/rpn.js')`
 
-### Usage
+## <a name="usage"></a> Usage
 
 `rpn.evaluate(expression, callback)`: Evaluate a string and return a number
 
@@ -58,7 +65,16 @@ rpn.evaluateReturnJson('6 7.5 + 2 - -3 +', function(err, json) {
 });
 ```
 
-### Demo
+## <a name="demo_features"></a> Demo Features
+The demo showcases the following features in addition to the rpn module:
+* Express.js usage and routing
+* Server-side and client-side field validation
+* Asynchronous form submission via jQuery with pure HTML fallback
+* DOM manipulation via jQuery
+* JSON object creation and manipulation
+
+## <a name="demo_installation"></a> Demo Installation
+
 Open demo directory
 ```
 cd demo
@@ -80,23 +96,5 @@ open http://localhost:3000
 start http://localhost:3000
 ```
 
-### Code Concepts
-* HTML
-  * Support systems with Javascript disabled
-* Vanilla Javascript
-  * Stack data structure
-  * JSON object manipulation
-* jQuery
-  * Asynchronous form submission
-  * Client-side form field validation
-  * DOM Manipulation
-* Node.js server with Express.js
-  * GETable and POSTable routes
-  * Server-side form field validation
-  * Custom node module
-  * Graceful error handling
-
-
-
-### License
-Released under the MIT license. See `LICENSE.txt`
+## <a name="license"></a> License
+RPN module and demo both released under the MIT license. See `LICENSE.txt`
