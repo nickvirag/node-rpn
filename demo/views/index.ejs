@@ -2,6 +2,9 @@
 
 <script type="text/javascript">
   $(function() {
+
+    // Asynchronous form submission. Form posts to /result if Javascript is disabled
+
     $('#rpnForm').submit(function(event) {
 
       var form = $(this);
@@ -18,6 +21,8 @@
 
       event.preventDefault();
     });
+
+    // Client-side form field validation
 
     var rpnFormValidation = function() {
       var form = $('#rpnForm');
