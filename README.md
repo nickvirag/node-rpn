@@ -125,7 +125,7 @@ start http://localhost:3000
 ```
 
 ## <a name="known_issues"></a> Known Issues
-None yet
+* No graceful handling of numbers that are too large or too small
 
 ## <a name="license"></a> License
 RPN module and demo both released under the MIT license. See `LICENSE.txt`
