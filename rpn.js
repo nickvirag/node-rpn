@@ -27,8 +27,8 @@ var calculate = function(firstTerm, secondTerm, operator) {
 
 exports.evaluate = function(expression, callback) {
 
-  var expression = expression.split(' ');
   var stack = [], err = [];
+  expression = expression.split(' ');
 
   expression.forEach(function(object) {
     if (operators.indexOf(object) != -1) {
