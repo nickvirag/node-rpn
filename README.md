@@ -149,7 +149,7 @@ start http://localhost:3000
 ```
 
 ## <a name="known_issues"></a> Known Issues
-* No graceful handling of out-of-scope numbers
+* None
 
 ## <a name="license"></a> License
 RPN module and demo both released under the MIT license. See `LICENSE.txt`
